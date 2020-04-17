@@ -129,7 +129,8 @@ class PageNormalizer extends ContentEntityNormalizer
             \explode(',', $page->get('container_inheritance')->getValue()[0]['value']) :
             [];
 
-        $parentPage = \reset($page->get('parent_page')->referencedEntities());
+        $parentPages = $page->get('parent_page')->referencedEntities();
+        $parentPage = \reset($parentPages);
 
         if ($parentPage) {
             $parentPage = $this->resolveContainerInheritance($parentPage);
